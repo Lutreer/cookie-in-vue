@@ -5,8 +5,6 @@
   "main": "./src/index.js",
   "dependencies": {
     "js-cookie": "^2.1.4",
-    "_js-cookie@2.1.4@js-cookie": "^2.1.4",
-    "_vue@2.4.2@vue": "^2.4.2",
     "vue": "^2.4.2"
   },
   "devDependencies": {},
