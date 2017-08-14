@@ -1,0 +1,31 @@
+{
+  "name": "cookie-in-vue",
+  "version": "0.1.1",
+  "description": "This is a plugin for vue",
+  "main": "./src/index.js",
+  "dependencies": {
+    "js-cookie": "^2.1.4",
+    "_js-cookie@2.1.4@js-cookie": "^2.1.4",
+    "_vue@2.4.2@vue": "^2.4.2",
+    "vue": "^2.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lutreer/cookie-in-vue.git"
+  },
+  "keywords": [
+    "vue2",
+    "plugin",
+    "cookie"
+  ],
+  "author": "leasong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lutreer/cookie-in-vue/issues"
+  },
+  "homepage": "https://github.com/Lutreer/cookie-in-vue#readme"
+}
