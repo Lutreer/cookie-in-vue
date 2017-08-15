@@ -38,13 +38,6 @@ VueCookie.remove('token') // VueCookie.remove('token', -1, 'localhost')
 
 ### All code
 ```javascript
-/*!
- * JavaScript Cookie v2.1.4
- * https://github.com/js-cookie/js-cookie
- *
- * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
- * Released under the MIT license
- */
 (function () {
 
   const Cookies = require('js-cookie')
@@ -60,10 +53,15 @@ VueCookie.remove('token') // VueCookie.remove('token', -1, 'localhost')
       Vue.cookie = this
     },
     set(name, value, expires, path) {
-      if (expires && Number.isInteger(expires)) {
+        expires = expires || 7
+      if (Number.isInteger(expires)) {
+        if(expires > 0) {
+          return Cookies.set(name, value, {expires: expires, path: path || '/'})
+        }
+      } else {
         console.error('Expires in VueCookie: Expected an integer value')
       }
-      return Cookies.set(name, value, {expires: expires || 7, path: path || '/'})
+
     },
     get(name) {
       return Cookies.get(name)
@@ -81,5 +79,4 @@ VueCookie.remove('token') // VueCookie.remove('token', -1, 'localhost')
     Vue.use(VueCookie);
   }
 })()
-
 ```
