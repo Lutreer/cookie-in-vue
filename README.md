@@ -32,7 +32,7 @@ export default new Vue({
 // other ways
 VueCookie.set('token', token, 7, 'localhost')
 VueCookie.get('token')
-VueCookie.remove('token')
+VueCookie.remove('token') // VueCookie.remove('token', -1, 'localhost')
 
 ```
 

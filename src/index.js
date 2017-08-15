@@ -28,12 +28,8 @@
     get(name) {
       return Cookies.get(name)
     },
-    remove(name, options) {
-      let opts = {expires: -1}
-      if (options !== undefined) {
-        opts = Object.assign(options, opts)
-      }
-      this.set(name, '', opts)
+    remove(name, path) {
+      this.set(name, '', -1, path)
     }
   }
   if (typeof exports == "object") {
