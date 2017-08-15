@@ -38,38 +38,48 @@ VueCookie.remove('token') // VueCookie.remove('token', -1, 'localhost')
 
 ### All code
 ```javascript
-import Cookies from 'js-cookie'
+/*!
+ * JavaScript Cookie v2.1.4
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+(function () {
 
-Number.isInteger = Number.isInteger || function(value) {
-    return typeof value === 'number' &&
-      isFinite(value) &&
-      Math.floor(value) === value
-  }
+  const Cookies = require('js-cookie')
 
-const VueCookie = {
-  install(Vue, option) {
-    Vue.prototype.$cookie = this
-    Vue.cookie = this
-  },
-  set(name, value, expires, path) {
-    if (expires && Number.isInteger(expires)) {
-      console.error('Expires in VueCookie: Expected an integer value')
+  Number.isInteger = Number.isInteger || function(value) {
+      return typeof value === 'number' && isFinite(value) &&
+        Math.floor(value) === value
     }
-    return Cookies.set(name, value, {expires: expires || 7, path: path || '/'})
-  },
-  get(name) {
-    return Cookies.get(name)
-  },
-  remove(name, options) {
-    let opts = {expires: -1}
-    if (options !== undefined) {
-      opts = Object.assign(options, opts)
+
+  const VueCookie = {
+    install(Vue, option) {
+      Vue.prototype.$cookie = this
+      Vue.cookie = this
+    },
+    set(name, value, expires, path) {
+      if (expires && Number.isInteger(expires)) {
+        console.error('Expires in VueCookie: Expected an integer value')
+      }
+      return Cookies.set(name, value, {expires: expires || 7, path: path || '/'})
+    },
+    get(name) {
+      return Cookies.get(name)
+    },
+    remove(name, path) {
+      this.set(name, '', -1, path)
     }
-    this.set(name, '', opts)
   }
-}
-export default VueCookie
-
-
+  if (typeof exports == "object") {
+    module.exports = VueCookie;
+  } else if (typeof define == "function" && define.amd) {
+    define([], function(){ return VueCookie; })
+  } else if (window.Vue) {
+    window.VueCookie = VueCookie;
+    Vue.use(VueCookie);
+  }
+})()
 
 ```
