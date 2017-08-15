@@ -65,12 +65,8 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_js_cookie__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_js_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_js_cookie__);
 /*!
  * JavaScript Cookie v2.1.4
  * https://github.com/js-cookie/js-cookie
@@ -78,36 +74,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
  * Released under the MIT license
  */
+(function () {
 
+  const Cookies = __webpack_require__(1)
 
-
-Number.isInteger = Number.isInteger || function (value) {
-  return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
-};
-
-const VueCookie = {
-  install(Vue, option) {
-    Vue.prototype.$cookie = this;
-    Vue.cookie = this;
-  },
-  set(name, value, expires, path) {
-    if (expires && Number.isInteger(expires)) {
-      console.error('Expires in VueCookie: Expected an integer value');
+  Number.isInteger = Number.isInteger || function(value) {
+      return typeof value === 'number' && isFinite(value) &&
+        Math.floor(value) === value
     }
-    return __WEBPACK_IMPORTED_MODULE_0_js_cookie___default.a.set(name, value, { expires: expires || 7, path: path || '/' });
-  },
-  get(name) {
-    return __WEBPACK_IMPORTED_MODULE_0_js_cookie___default.a.get(name);
-  },
-  remove(name, options) {
-    let opts = { expires: -1 };
-    if (options !== undefined) {
-      opts = Object.assign(options, opts);
+
+  const VueCookie = {
+    install(Vue, option) {
+      Vue.prototype.$cookie = this
+      Vue.cookie = this
+    },
+    set(name, value, expires, path) {
+      if (expires && Number.isInteger(expires)) {
+        console.error('Expires in VueCookie: Expected an integer value')
+      }
+      return Cookies.set(name, value, {expires: expires || 7, path: path || '/'})
+    },
+    get(name) {
+      return Cookies.get(name)
+    },
+    remove(name, options) {
+      let opts = {expires: -1}
+      if (options !== undefined) {
+        opts = Object.assign(options, opts)
+      }
+      this.set(name, '', opts)
     }
-    this.set(name, '', opts);
   }
-};
-/* harmony default export */ __webpack_exports__["default"] = (VueCookie);
+  if (true) {
+    module.exports = VueCookie;
+  } else if (typeof define == "function" && define.amd) {
+    define([], function(){ return VueCookie; })
+  } else if (window.Vue) {
+    window.VueCookie = VueCookie;
+    Vue.use(VueCookie);
+  }
+})()
+
+
+
 
 /***/ }),
 /* 1 */
