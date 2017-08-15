@@ -1,6 +1,6 @@
 {
   "name": "cookie-in-vue",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "This is a plugin for vue",
   "main": "./src/index.js",
   "dependencies": {
