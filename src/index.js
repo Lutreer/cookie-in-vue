@@ -22,9 +22,7 @@
     set(name, value, expires, path) {
         expires = expires || 7
       if (Number.isInteger(expires)) {
-        if(expires > 0) {
-          return Cookies.set(name, value, {expires: expires, path: path || '/'})
-        }
+        return Cookies.set(name, value, {expires: expires, path: path || '/'})
       } else {
         console.error('Expires in VueCookie: Expected an integer value')
       }
