@@ -15,11 +15,11 @@
     }
 
   const VueCookie = {
-    install(Vue, option) {
+    install: function(Vue, option) {
       Vue.prototype.$cookie = this
       Vue.cookie = this
     },
-    set(name, value, expires, path) {
+    set: function(name, value, expires, path) {
         expires = expires || 7
       if (Number.isInteger(expires)) {
         return Cookies.set(name, value, {expires: expires, path: path || '/'})
@@ -28,10 +28,10 @@
       }
 
     },
-    get(name) {
+    get: function(name) {
       return Cookies.get(name)
     },
-    remove(name, path) {
+    remove: function(name, path) {
       this.set(name, '', -1, path)
     }
   }
